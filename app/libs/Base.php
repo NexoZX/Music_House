@@ -76,6 +76,6 @@ class Base
 
     public function count()
     {
-        return $this->stmt->rowCunt();
+        return $this->stmt->rowCount();
     }
 }
