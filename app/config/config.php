@@ -1,12 +1,11 @@
-<?php
+<?php 
 
-// definicion de constantes para base de datos
+// This is the database information
+define("DB_HOST" , "localhost");
+define("DB_NAME" , "redsocial");
+define("DB_USER" , "root");
+define("DB_PASSWORD" , "");
 
-define('DB_HOST', ' localhost');
-define('DB_NAME', ' redsocial');
-define('DB_USER', ' root');
-define('DB_PASSWORD', ' ');
-
-define('URL_APP', dirname(dirname(__FILE__)));
-
-echo URL_APP;
+define("URL_APP" , dirname(dirname(__FILE__)));
+define("URL_PROJECT" , "http://localhost/framework-mvc/");
+define("PROJECT_NAME" , "Framework MVC");

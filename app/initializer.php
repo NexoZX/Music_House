@@ -1,12 +1,9 @@
 <?php
 
-// Llamado a config
-require_once 'config/config.php';
+include_once "config/config.php";
 
-// Llamado a url helper
-require_once 'helpers/url_helper.php';
+include_once "helper/helper.php";
 
-// Llamado a libs
-spl_autoload_register(function($files){
-    require_once 'libs/' . $files . '.php';
+spl_autoload_register(function($file) {
+    include_once "libs/" . $file . ".php";
 });
