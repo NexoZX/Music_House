@@ -39,10 +39,8 @@ class Home extends Controller
 
             $datosUsuario = $this->usuario->getUsuario($datosLogin['usuario']);
 
-            var_dump($datosUsuario);
-
             if ($this->usuario->verificarContrasena($datosUsuario, $datosLogin['contrasena'])) {
-                $_SESSION['logueado'] = $datosUsuario->idPrivilegio;
+                $_SESSION['logueado'] = $datosUsuario->idusuario;
                 $_SESSION['usuario'] = $datosUsuario->usuario;
                 redirection('/home');
             } else {

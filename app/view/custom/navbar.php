@@ -10,11 +10,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white"><span class="big"><i
+                        <a href="#" class="nav-link text-dark"><span class="big"><i
                                     class="fas fa-home mr-1"></i></span>Inicio</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white"><span class="big"><i
+                        <a href="#" class="nav-link text-dark"><span class="big"><i
                                     class="fas fa-home mr-1"></i></span>Usuarios</a>
                     </li>
                     <li class="nav-item">
@@ -38,7 +38,7 @@
                 <div class="dropdown">
                     <span class="btn-radio dropdown-toggle" id="actionPerfil" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo URL_PROJECT . '/' . $datos['perfil']->fotoPerfil ?>" alt="perfil" class="img-perfil">
+                        <img src="<?php echo URL_PROJECT.'/'.$params['perfil']->fotoPerfil ?>" alt="perfil" class="img-perfil">
                         <?php echo ucwords($_SESSION['usuario']); ?>
                     </span>
                     <div class="dropdown-menu" aria-labelledby="actionPerfil">

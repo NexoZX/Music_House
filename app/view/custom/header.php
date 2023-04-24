@@ -12,7 +12,11 @@
     <script src="https://kit.fontawesome.com/c9dc76b544.js" crossorigin="anonymous"></script>
 
     <!-- Css -->
-    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/style.css">
+    
+    <!-- <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/style.css">-->
+    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/navbar.css">
+    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/home.css">
+    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/perfil.css">
     
     <title><?php echo PROJECT_NAME ?></title>
 </head>

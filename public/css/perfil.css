@@ -1,0 +1,35 @@
+
+
+.imagen-perfil-cambiar:hover {
+    color: #4f406b;
+}
+
+.datos-perfil-usuario {
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-change-image {
+    border: 0;
+    border-radius: 10px;
+    background-color: #926dde;
+    color: #ffffff;
+}
+
+.editar-perfil {
+    position: absolute;
+    right: 40px;
+}
+
+.container-header-usuario {
+    width: 100%;
+}
+
+.container-principal-informacion-usuario {
+    margin-top: 35px;
+}
