@@ -11,7 +11,7 @@ class perfilUsuario
 
     public function editarFoto($datos)
     {
-        $this->db->query('UPDATE perfil SET fotoPerfil = :ruta WHERE idUsuario = iduser');
+        $this->db->query('UPDATE perfil SET fotoPerfil = :ruta WHERE idUsuario = :iduser');
         $this->db->bind(':ruta', $datos['ruta']);
         $this->db->bind(':iduser', $datos['idusuario']);
         

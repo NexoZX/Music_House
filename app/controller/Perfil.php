@@ -25,7 +25,7 @@ class Perfil extends Controller
     }
 
     public function cambiarImagen()
-    {        
+    {       
         $carpeta = 'C:/xampp/htdocs/Music_House/public/img/imagenesPerfil/';
         opendir($carpeta);
         $rutaImagen = 'img/imagenesPerfil/' . $_FILES['imagen']['name'];
@@ -35,7 +35,11 @@ class Perfil extends Controller
         $datos = [
             'idusuario' => trim($_POST['id_user']),
             'ruta' => $rutaImagen
-        ];
+        ];        
+        
+        $imagenActual = $this->usuario->getPerfil($datos['idusuario']);
+
+        unlink('C:/xampp/htdocs/Music_House/public/' . $imagenActual->fotoPerfil);
 
         if ($this->perfil->editarFoto($datos)) {
             redirection('/home');

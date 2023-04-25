@@ -2,9 +2,10 @@
 include_once URL_APP . '/view/custom/header.php';
 
 include_once URL_APP . '/view/custom/navbar.php';
+
 ?>
 
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <!-- Columna perfil -->
         <div class="col-md-3">
@@ -12,7 +13,11 @@ include_once URL_APP . '/view/custom/navbar.php';
                 <div class="perfil-usuario-main"></div>
                 <img src="<?php echo URL_PROJECT . '/' . $params['perfil']->fotoPerfil ?>" alt="">
                 <div class="foto-separation"></div>
-                <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $params['usuario']->usuario ?>"><div class="text-center nombre-perfil"><?php echo $params['perfil']->nombreCompleto ?></div></a>
+                <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $params['usuario']->usuario ?>" class="links">
+                    <div class="text-center nombre-perfil">
+                        <?php echo $params['perfil']->nombreCompleto ?>
+                    </div>
+                </a>
                 <div class="tabla-estadisticas">
                     <a href="#">Publicaciones <br> 0 </a>
                     <a href="#">Me gusta <br> 0 </a>
@@ -23,10 +28,13 @@ include_once URL_APP . '/view/custom/navbar.php';
         <div class="col-md-6">
             <div class="container-style-main">
                 <div class="container-usuario-publicar">
-                    <a href="<?php echo URL_PROJECT ?>/perfil"><img src="<?php echo URL_PROJECT . '/' . $params['perfil']->fotoPerfil ?>" class="image-border"
+                    <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $params['usuario']->usuario ?>"><img
+                            src="<?php echo URL_PROJECT . '/' . $params['perfil']->fotoPerfil ?>" class="image-border"
                             alt=""></a>
-                    <form action="" class="form-publicar ml-2">
-                        <textarea name="post" id="" class="published mb-0" cols="30" rows="10"
+                    <form
+                        action="<?php echo URL_PROJECT ?>/publicaciones/publicar/<?php echo $params['usuario']->idusuario ?>"
+                        method="POST" enctype="multipart/form-data" class="form-publicar ml-2">
+                        <textarea name="contenido" id="contenido" class="published mb-0" name="post"
                             placeholder="Que estas pensando?" required></textarea>
                         <div class="image-upload-file">
                             <div class="upload-photo">
@@ -40,8 +48,28 @@ include_once URL_APP . '/view/custom/navbar.php';
                         </div>
                     </form>
                 </div>
-                <div class="container-usuarios-publicaciones">
-                </div>
+                <?php foreach ($params['publicaciones'] as $datosPublicacion): ?>
+                    <div class="container-usuarios-publicaciones">
+                        <div class="usuarios-publicaciones-top">
+                            <img src="<?php echo URL_PROJECT . '/' . $datosPublicacion->fotoPerfil ?>" alt=""
+                                class="image-border">
+                            <div class="informacion-usuario-publico">
+                                <h6 class="mb-0"><a
+                                        href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosPublicacion->usuario ?>"><?php echo ucwords($datosPublicacion->usuario) ?></a></h6>
+                                <span>
+                                    <?php echo $datosPublicacion->fechaPublicacion ?>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="contenido-publicacion-usuario">
+                            <p class="mb-1">
+                                <?php echo $datosPublicacion->contenidoPublicacion ?>
+                            </p>
+                            <img src="<?php echo URL_PROJECT . '/' . $datosPublicacion->fotoPublicacion ?>" alt=""
+                                class="imagen-publicacion-usuario">
+                        </div>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
         <div class="col-md-3">
