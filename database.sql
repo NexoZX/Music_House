@@ -1,5 +1,5 @@
-create database rs
-use rs
+create database redsocial
+use redsocial
 
 create table usuarios
 {
@@ -16,17 +16,9 @@ create table perfil
 {
 idPerfil INT,
 idUsuario INT, 
-idFoto INT ,
+fotoPerfil VARCHAR(255) ,
 nombreCompleto VARCHAR(100),
 PRIMARY KEY (idPerfil)
-}
-
-create table fotos
-{
-idFoto INT,
-nombreFoto VARCHAR(200),
-rutaFoto VARCHAR(255),
-PRIMARY KEY (idFoto)
 }
 
 create table publicaciones
