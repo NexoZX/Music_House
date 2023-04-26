@@ -27,7 +27,8 @@ class publicar
     {
         $this->db->query('SELECT P.contenidoPublicacion, P.fotoPublicacion, P.fechaPublicacion, U.usuario, Per.fotoPerfil FROM publicaciones P
         INNER JOIN usuarios U ON U.idusuario = P.idUserPublico
-        INNER JOIN perfil Per ON Per.idUsuario = P.idUserPublico');
+        INNER JOIN perfil Per ON Per.idUsuario = P.idUserPublico
+        ORDER BY P.fechaPublicacion DESC');
         return $this->db->registers();
     }
 }

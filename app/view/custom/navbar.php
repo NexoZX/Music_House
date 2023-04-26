@@ -1,51 +1,39 @@
-<header>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light text-black">
-            <a href="#" class="navbar-brand"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-dark"><span class="big"><i
-                                    class="fas fa-home mr-1"></i></span>Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-dark"><span class="big"><i
-                                    class="fas fa-home mr-1"></i></span>Usuarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="" class="tipe-form form-inline my-2 my-lg-0">
-                            <input type="text" name="buscar" class="form-style" placeholder="Buscar">
-                            <button class="btn-form" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-
-                <div class="links">
-                    <a href=""><span class="big"><i class="far fa-envelope"></i></span><span
-                            class="mb-0 ml-1">Mensajes</span></a>
-                </div>
-                <div class="links">
-                    <a href=""><span class="big"><i class="far fa-bell"></i></span><span
-                            class="mb-0 ml-1">Notificaciones</span></a>
-                </div>
-                <div class="dropdown">
-                    <span class="btn-radio dropdown-toggle" id="actionPerfil" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo URL_PROJECT.'/'.$params['perfil']->fotoPerfil ?>" alt="perfil" class="img-perfil">
-                        <?php echo ucwords($_SESSION['usuario']); ?>
-                    </span>
-                    <div class="dropdown-menu" aria-labelledby="actionPerfil">
-                        <a class="dropdown-item text-dark" href="<?php echo URL_PROJECT ?>/home/logout">Salir</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<header class="header">
+    <div class="logo">
+        <img src="<?php echo URL_PROJECT ?>/img/MH.png">
     </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fa-solid fa-house" style="color: #ffffff;"></i> Inicio</a></li>
+            <li><a href="#"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Usuarios</a></li>
+            <input class="searchbar" type="text" placeholder=" Buscar">
+            <i class="fa fa-search" style="font-size: 18px; color:white"></i>
+            <li><a href="#"><i class="fa-solid fa-message" style="color: #ffffff;"></i> Mensajes</a></li>
+            <li><a href="#"><i class="fa-solid fa-bell" style="color: #ffffff;"></i> Notificaciones</a></li>
+        </ul>
+    </nav>
+
+    <div class="dropdown">
+        <span class="btn-radio dropdown-toggle white" id="actionPerfil" style="border-radius: 10px; padding: 5px;" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <img src="<?php echo URL_PROJECT . '/' . $params['perfil']->fotoPerfil ?>" alt="perfil" class="img-perfil">
+            <?php echo ucwords($_SESSION['usuario']); ?>
+        </span>
+        <div class="dropdown-menu" aria-labelledby="actionPerfil">
+            <a class="dropdown-item" href="<?php echo URL_PROJECT ?>/home/logout">Salir</a>
+        </div>
+    </div>
+
+    <a onclick="openNav()" class="menu" href="#"><button>Menu</button></a>
+    <div id="mobile-menu" class="overlay">
+        <a onclick="closeNav()" href="" class="close">&times;</a>
+        <div class="overlay-content">
+            <a href="#">Inicio</a>
+            <a href="#">Usuarios</a>
+            <a href="#">Mensajes</a>
+            <a href="#">Notificaciones</a>
+            <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $params['usuario']->usuario ?>">Perfil</a>
+        </div>
+    </div>
+
 </header>

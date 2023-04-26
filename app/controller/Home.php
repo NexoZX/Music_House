@@ -37,11 +37,11 @@ class Home extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $datosLogin = [
-                'usuario' => trim($_POST['usuario']),
+                'correo' => trim($_POST['correo']),
                 'contrasena' => trim($_POST['contrasena'])
             ];
 
-            $datosUsuario = $this->usuario->getUsuario($datosLogin['usuario']);
+            $datosUsuario = $this->usuario->getCorreo($datosLogin['correo']);
 
             if ($this->usuario->verificarContrasena($datosUsuario, $datosLogin['contrasena'])) {
                 $_SESSION['logueado'] = $datosUsuario->idusuario;

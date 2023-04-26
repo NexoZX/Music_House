@@ -1,48 +1,47 @@
 <?php
-
 include_once URL_APP . '/view/custom/header.php';
-
-// include_once URL_APP . '/view/custom/navbar.php';
 ?>
 
-<div class="container-center center">
-    <div class="container-content center">
-        <div class="content-action center">
-            <h4>Iniciar Sesion</h4>
-            <form action="<?php echo URL_PROJECT ?>/home/login" method="POST">
-                <input type="text" name="usuario" placeholder="Usuario" required>
-                <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button class="btn-purple btn-block">Ingresar</button>
-            </form>
-            <!-- Alerta cuando el usuario o contraseña son erroneos -->
-            <?php if (isset($_SESSION['errorLogin'])) : ?>
-                <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
-                    <?php echo $_SESSION['errorLogin'] ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php unset($_SESSION['errorLogin']);
-            endif ?>
-
-            <!-- Alerta cuando el registro se completa -->
-            <?php if (isset($_SESSION['loginComplete'])) : ?>
-                <div class="alert alert-success alert-dismissible fade show mt-2 mb-2" role="alert">
-                    <?php echo $_SESSION['loginComplete'] ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php unset($_SESSION['loginComplete']);
-            endif ?>
-            <div class="contenido-link mt-2">
-                <span class="mr-2">¿No tienes una cuenta?</span><a href="<?php echo URL_PROJECT ?>/home/register">Registrarme</a>
+<head>
+    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/system.css">
+</head>
+<section class="contrato">
+    <header>
+        <span>
+            <img src="<?php echo URL_PROJECT ?>/img/MH.png" width="130" height="130"><br>
+            <h1 style="font-size: 40px;">Inicio de Sesión</h1>
+        </span>
+    </header>
+    <form action="<?php echo URL_PROJECT ?>/home/login" class="contact" method="POST">
+        <br>
+        <label class="form-label" for="correo">CORREO ELECTRÓNICO:</label>
+        <input type="email" class="form-control" id="email" name="correo" placeholder="micorreo@gmail.com" required/><br>
+        <label class="form-label" for="contrasena">CONTRASEÑA:</label>
+        <input type="password" class="form-control" id="email" name="contrasena" placeholder="contraseña" required/><br>
+        <!-- Alerta cuando el usuario o contraseña son erroneos -->
+        <?php if (isset($_SESSION['errorLogin'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
+                <?php echo $_SESSION['errorLogin'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        </div>
-        <div class="content-image center">
-            <img src="<?php echo URL_PROJECT ?>/img/vector.png" alt="Hombre sentado en una silla">
-        </div>
-    </div>
-</div>
+            <?php unset($_SESSION['errorLogin']);
+        endif ?>
 
+        <!-- Alerta cuando el registro se completa -->
+        <?php if (isset($_SESSION['loginComplete'])): ?>
+            <div class="alert alert-success alert-dismissible fade show mt-2 mb-2" role="alert">
+                <?php echo $_SESSION['loginComplete'] ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php unset($_SESSION['loginComplete']);
+        endif ?>
+
+        <center>
+            <button>Iniciar Sesión</button><br><br>
+            ¿No Tienes una Cuenta? <br>
+            Registrate <a href="<?php echo URL_PROJECT ?>/home/register">Aquí</a>
+        </center>
+</section>
 <?php
-
 include_once URL_APP . '/view/custom/footer.php';
-
 ?>

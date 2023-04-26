@@ -16,6 +16,13 @@ class usuario
         return $this->db->register();
     }
 
+    public function getCorreo($correo)
+    {
+        $this->db->query('SELECT * FROM usuarios WHERE correo = :correo');
+        $this->db->bind(':correo', $correo);
+        return $this->db->register();
+    }
+
     public function getPerfil($idusuario)
     {
         $this->db->query('SELECT * FROM perfil WHERE idusuario = :id');

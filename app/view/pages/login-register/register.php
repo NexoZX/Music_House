@@ -1,38 +1,41 @@
 <?php
-
 include_once URL_APP . '/view/custom/header.php';
-
-//include_once URL_APP . '/view/custom/navbar.php';
 ?>
 
-<div class="container-center center">
-    <div class="container-content center">
-        <div class="content-action center">
-            <h4>Iniciar Sesion</h4>
-            <form action="<?php echo URL_PROJECT ?>/home/register" method="POST">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="usuario" placeholder="Usuario" required>
-                <input type="password" name="contrasena" placeholder="Contraseña" required>
-                <button class="btn-purple btn-block">Registrarme</button>
-            </form>
-            <?php if (isset($_SESSION['usuarioError'])) : ?>
-                <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
-                    <?php echo $_SESSION['usuarioError'] ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php unset($_SESSION['usuarioError']);
-            endif ?>
-            <div class="contenido-link mt-2">
-                <span class="mr-2">¿Ya tienes una cuenta?</span><a href="<?php echo URL_PROJECT ?>/home/login">Ingresar</a>
+<head>
+    <link rel="stylesheet" href="<?php echo URL_PROJECT ?>/css/system.css">
+</head>
+
+<section class="contrato">
+    <header>
+        <span>
+            <img src=="<?php echo URL_PROJECT ?>/img/MH.png" width="130" height="130">
+            <h1 style="font-size: 40px;">Registro de Usuario</h1>
+        </span>
+    </header>
+    <form action="<?php echo URL_PROJECT ?>/home/register" class="contact" method="POST">
+        <label class="form-label" for="email">CORREO ELECTRÓNICO:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="micorreo@gmail.com" /><br>
+        <label class="form-label" for="usuario">NOMBRE DE USUARIO:</label>
+        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Alva Majo" /><br>
+        <label class="form-label" for="contrasena">CONTRASEÑA:</label>
+        <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="contraseña" /><br>
+        <br><br>
+        <?php if (isset($_SESSION['usuarioError'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
+                <?php echo $_SESSION['usuarioError'] ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
-        <div class="content-image center">
-            <img src="<?php echo URL_PROJECT ?>/img/vector.png" alt="Hombre sentado en una silla">
-        </div>
-    </div>
-</div>
+            <?php unset($_SESSION['usuarioError']);
+        endif ?>
+        <center>
+            <button>Registrarse</button><br><br>
+            ¿Ya Tienes una Cuenta? <br>
+            Inicia Sesión <a href="<?php echo URL_PROJECT ?>/home/login.php">Aquí</a>
+        </center>
+</section>
 
 <?php
 
