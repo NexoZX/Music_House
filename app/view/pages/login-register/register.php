@@ -9,7 +9,8 @@ include_once URL_APP . '/view/custom/header.php';
 <section class="contrato">
     <header>
         <span>
-            <img src=="<?php echo URL_PROJECT ?>/img/MH.png" width="130" height="130">
+        <img src="<?php echo URL_PROJECT ?>/img/MH.png" width="130" height="130"><br>
+
             <h1 style="font-size: 40px;">Registro de Usuario</h1>
         </span>
     </header>
