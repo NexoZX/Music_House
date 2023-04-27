@@ -41,12 +41,11 @@ include_once URL_APP . '/view/custom/aside.php';
 
     <!-- esto genera las publicaciones en si -->
     <?php foreach ($params['publicaciones'] as $datosPublicacion) : ?>
-        <hr>
+
         <div class="container-usuarios-publicaciones">
             <div class="usuarios-publicaciones-top">
                 <img src="<?php echo URL_PROJECT . '/' . $datosPublicacion->fotoPerfil ?>" alt="" class="image-border">
-                <div class="informacion-usuario-publico">
-                    
+                <div class="informacion-usuario-publico">                    
                     <h6 class="mb-0"><a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosPublicacion->usuario ?>"><?php echo ucwords($datosPublicacion->usuario) ?></a></h6>
                     <span>
                         <?php echo $datosPublicacion->fechaPublicacion ?>
@@ -58,7 +57,9 @@ include_once URL_APP . '/view/custom/aside.php';
                 <p class="mb-1">
                     <?php echo $datosPublicacion->contenidoPublicacion ?>
                 </p>
-                
+                <?php if ($datosPublicacion->fotoPublicacion != "sin imagen") : ?>
+                    <hr>
+                <?php endif ?>
                 <img src="<?php echo URL_PROJECT . '/' . $datosPublicacion->fotoPublicacion ?>" alt="" class="imagen-publicacion-usuario">
             </div>
         </div>

@@ -8,6 +8,10 @@
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
 body{
     background-color: #ffffff;
     min-width: 400px;
@@ -211,4 +215,22 @@ img{
     color: #eceff1;
 }
 
+.container-usuarios-publicaciones {
+    border-radius: 15px;
+    background-color: #eceff1;
+    padding: 25px;
+    margin: 30px 0 30px 25px;
+}
 
+.image-border {
+    border-radius: 15%;
+}
+
+.contenido-publicacion-usuario {
+    text-align: justify;
+    text-justify: auto;
+}
+
+.published {
+    border-radius: 5px;
+}
