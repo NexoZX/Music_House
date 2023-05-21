@@ -13,8 +13,8 @@
                         <?php echo ucwords($params['usuario']->usuario) ?>
                     </h3>
                 </center>
-                <form action="<?php echo URL_PROJECT ?>/publicaciones/publicar/<?php echo $params['usuario']->idusuario ?>" method="POST" enctype="multipart/form-data" class="form-publicar ml-2">
-                    <textarea name="contenido" id="contenido" class="published mb-0" name="post" placeholder="¿Qué Estas Pensando?"  cols="25" rows="4" style="resize: none"></textarea>
+                <form action="<?php echo URL_PROJECT ?>/publicaciones/publicar/<?php echo $params['usuario']->idUsuario ?>" method="POST" enctype="multipart/form-data" class="form-publicar ml-2">
+                    <textarea name="contenido" id="contenido" class="published mb-0" name="post" placeholder="¿Qué Estas Pensando?"  cols="25" rows="4" style="resize: none" required></textarea>
                     <img src="<?php echo URL_PROJECT ?>/img/image.png" alt="" class="image-public">
 
                     <center>

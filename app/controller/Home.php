@@ -16,11 +16,14 @@ class Home extends Controller
 
             $datosPublicaciones = $this->publicaciones->getPublicaciones();
 
+            $verificarLike = $this->publicaciones->misLikes($_SESSION['logueado']);
+
             if ($datosPerfil) {
                 $datosRed = [
                     'usuario' => $datosUsuario,
                     'perfil' => $datosPerfil,
-                    'publicaciones' => $datosPublicaciones
+                    'publicaciones' => $datosPublicaciones,
+                    'misLikes' => $verificarLike
                 ];
 
                 $this->view('pages/home', $datosRed);
@@ -44,7 +47,7 @@ class Home extends Controller
             $datosUsuario = $this->usuario->getCorreo($datosLogin['correo']);
 
             if ($this->usuario->verificarContrasena($datosUsuario, $datosLogin['contrasena'])) {
-                $_SESSION['logueado'] = $datosUsuario->idusuario;
+                $_SESSION['logueado'] = $datosUsuario->idUsuario;
                 $_SESSION['usuario'] = $datosUsuario->usuario;
                 redirection('/home');
             } else {

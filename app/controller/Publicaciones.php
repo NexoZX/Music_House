@@ -31,4 +31,43 @@ class Publicaciones extends Controller
             echo 'algo ocurrio';
         }
     }
+
+    public function eliminar($idpublicacion)
+    {
+        $publicacion = $this->publicar->getPublicacion($idpublicacion);
+
+        if ($this->publicar->eliminarPublicacion($publicacion)) {
+            unlink(URL_PUBLIC_DIRECTORY . '/' . $publicacion->fotoPublicacion);
+            redirection('/home');
+        } else {
+            # code...
+        }
+    }
+
+    public function megusta($idPublicacion, $idUsuario)
+    {
+        $datos = [
+            'idPublicacion' => $idPublicacion,
+            'idUsuario' => $idUsuario
+        ];
+
+        $datosPublicacion = $this->publicar->getPublicacion($idPublicacion);
+
+        if ($this->publicar->rowLikes($datos)) {
+            if ($this->publicar->eliminarLike($datos)) {
+                $this->publicar->deleteLikeCount($datosPublicacion);
+            }
+            redirection('/home');
+        } else {
+            if ($this->publicar->agregarLike($datos)) {
+                $this->publicar->addLikeCount($datosPublicacion);
+            }
+            redirection('/home');
+        }
+    }
+
+    public function comentar()
+    {
+        
+    }
 }

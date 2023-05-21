@@ -28,7 +28,7 @@ include_once URL_APP . '/view/custom/navbar.php';
                             <div class="datos-perfil-usuario">
                                 <img src="<?php echo URL_PROJECT ?>/<?php echo $params['perfil']->fotoPerfil ?>" class="imagen-perfil-usuario" alt="">
 
-                                <?php if ($params['usuario']->idusuario == $_SESSION['logueado']) : ?>
+                                <?php if ($params['usuario']->idUsuario == $_SESSION['logueado']) : ?>
                                     <div class="imagen-perfil-cambiar">
                                         <div class="imagen-header-perfil-usuario">
 

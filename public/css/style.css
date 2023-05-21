@@ -234,3 +234,35 @@ img{
 .published {
     border-radius: 5px;
 }
+
+.like-active {
+    color: #926dde !important;
+}
+.acciones-usuario-publicar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.acciones-usuario-publicar a {
+    text-decoration: none;
+    color: #5d5d5d;
+}
+
+.formulario-comentarios {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+
+.acciones-formulario-comentario {
+    width: 100%;
+}
+
+.form-comentario-usuario {
+    border: 0;
+    border-bottom: 1px solid #747474a8;
+    width: 100%;
+    padding: .4em .5em .4em .8em;
+    outline: none;
+}

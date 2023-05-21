@@ -1,4 +1,5 @@
-create database redsocial
+create database [IF NOT EXISTS] redsocial
+
 use redsocial
 
 
@@ -45,6 +46,7 @@ idPublicacion INT NOT NULL AUTO_INCREMENT,
 idUserPublico INT,
 contenidoPublicacion LONGTEXT,
 fotoPublicacion VARCHAR(255),
+num_likes INT,
 fechaPublicacion TIMESTAMP,
 PRIMARY KEY (idPublicacion),
 FOREIGN KEY (idUserPublico) REFERENCES usuarios(idUsuario)
@@ -54,18 +56,22 @@ create table comentarios
 (
 idComentario INT NOT NULL AUTO_INCREMENT,
 idPublicacion INT,
+idUser INT,
 contenidoComentario LONGTEXT,
 fechaComentario TIMESTAMP,
 PRIMARY KEY (idComentario),
-FOREIGN KEY (idPublicacion) REFERENCES publicaciones(idPublicacion)
+FOREIGN KEY (idPublicacion) REFERENCES publicaciones(idPublicacion),
+FOREIGN KEY (idUser) REFERENCES usuarios(idUsuario)
 );
 
 create table likes
 (
 idLike INT NOT NULL AUTO_INCREMENT,
 idPublicacion INT,
+idUser INT,
 PRIMARY KEY (idLike),
-FOREIGN KEY (idPublicacion) REFERENCES publicaciones(idPublicacion)
+FOREIGN KEY (idPublicacion) REFERENCES publicaciones(idPublicacion),
+FOREIGN KEY (idUser) REFERENCES usuarios(idUsuario)
 );
 
 create table mensajes
@@ -88,3 +94,9 @@ PRIMARY KEY (idNotificacion),
 FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
 FOREIGN KEY (tipoNotificacion) REFERENCES tipoNotificaciones(idTiposNotificaciones)
 );
+
+INSERT INTO privilegios(idPrivilegio, nombrePrivilegio) VALUES (null,'Admin');
+INSERT INTO privilegios(idPrivilegio, nombrePrivilegio) VALUES (null,'Usuario');
+
+ALTER TABLE publicaciones CHANGE fechaPublicacion fechaPublicacion timestamp NOT NULL default CURRENT_TIMESTAMP;
+ALTER TABLE comentarios CHANGE fechaComentario fechaComentario timestamp NOT NULL default CURRENT_TIMESTAMP;

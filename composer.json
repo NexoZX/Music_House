@@ -1,0 +1,13 @@
+{
+    "name": "vendor/music-house",
+    "description": "Description of project Music_House.",
+    "authors": [
+        {
+            "name": "hugor",
+            "email": "your@email.here"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit-skeleton-generator": "*"
+    }
+}
