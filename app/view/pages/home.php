@@ -56,7 +56,7 @@ include_once URL_APP . '/view/custom/aside.php';
                 </div>
                 <!-- Seccion donde se permite eliminar unicamente al dueño de la publicacion -->
                 <div class="acciones-publicacion-usuario">
-                    <?php if ($params['usuario']->usuario == $datosPublicacion->usuario): ?>
+                    <?php if ($datosPublicacion->usuario == $_SESSION['logueado']): ?>
                         <a
                             href="<?php echo URL_PROJECT ?>/publicaciones/eliminar/<?php echo $datosPublicacion->idPublicacion ?>"><i
                                 class="far fa-trash-alt"></i></a>
@@ -92,7 +92,7 @@ include_once URL_APP . '/view/custom/aside.php';
             <div class="formulario-comentarios">
                 <img src="<?php echo URL_PROJECT . '/' . $params['perfil']->fotoPerfil ?>" alt="" class="image-border mr-2">
                 <div class="acciones-formulario-comentario">
-                    <form action="<?php echo URL_PROJECT ?>/publicaciones/comentar">
+                    <form action="<?php echo URL_PROJECT ?>/publicaciones/comentar" method="POST">
                         <input type="hidden" name="idUser" value="<?php echo $params['usuario']->idUsuario ?>">
                         <input type="hidden" name="idPublicacion" value="<?php echo $datosPublicacion->idPublicacion ?>">
                         <input type="text" name="comentario" class="form-comentario-usuario"
@@ -103,6 +103,27 @@ include_once URL_APP . '/view/custom/aside.php';
                     </form>
                 </div>
             </div>
+            <?php foreach ($params['comentarios'] as $datosComentarios): ?>
+                <?php if ($datosComentarios->idPublicacion == $datosPublicacion->idPublicacion): ?>
+                    <div class="container-contenido-comentarios">
+                        <img src="<?php echo URL_PROJECT . '/' . $datosComentarios->fotoPerfil ?>" alt="" class="image-border mr-2">
+                        <div class="contenido-comentario-usuario">
+                            <?php if ($datosComentarios->idUser == $_SESSION['logueado']): ?>
+                                <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $datosComentarios->idComentario ?>"
+                                    class="float-right"><i class="far fa-trash-alt"></i></a>
+                            <?php endif ?>
+                            <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosComentarios->usuario ?>"
+                                class="big mr-2"><?php echo $datosComentarios->usuario ?></a>
+                            <span>
+                                <?php echo $datosComentarios->fechaComentario ?>
+                            </span>
+                            <p>
+                                <?php echo $datosComentarios->contenidoComentario ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
         </div>
     <?php endforeach ?>
     <hr>

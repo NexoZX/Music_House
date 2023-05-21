@@ -18,12 +18,17 @@ class Home extends Controller
 
             $verificarLike = $this->publicaciones->misLikes($_SESSION['logueado']);
 
+            $comentarios = $this->publicaciones->getComentarios();
+
+            $informacionComentarios = $this->publicaciones->getInformacionComentarios($comentarios);
+
             if ($datosPerfil) {
                 $datosRed = [
                     'usuario' => $datosUsuario,
                     'perfil' => $datosPerfil,
                     'publicaciones' => $datosPublicaciones,
-                    'misLikes' => $verificarLike
+                    'misLikes' => $verificarLike,
+                    'comentarios' => $informacionComentarios
                 ];
 
                 $this->view('pages/home', $datosRed);

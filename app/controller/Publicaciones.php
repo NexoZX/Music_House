@@ -66,8 +66,30 @@ class Publicaciones extends Controller
         }
     }
 
-    public function comentar()
+    public function comentar() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $datos = [
+                'idUser' => trim($_POST['idUser']),
+                'idPublicacion' => trim($_POST['idPublicacion']),
+                'comentario' => trim($_POST['comentario']),
+            ];
+
+            if ($this->publicar->publicarComentario($datos)) {
+                redirection('/home');
+            } else {
+                redirection('/home');
+            }
+        } else {
+            redirection('/home');
+        }
+    }
+
+    public function eliminarComentario($id)
     {
-        
+        if($this->publicar->eliminarComentarioUsuario($id)){
+            redirection('/home');
+        } else {
+            redirection('/home');
+        }
     }
 }
