@@ -56,7 +56,7 @@ include_once URL_APP . '/view/custom/aside.php';
                 </div>
                 <!-- Seccion donde se permite eliminar unicamente al dueño de la publicacion -->
                 <div class="acciones-publicacion-usuario">
-                    <?php if ($datosPublicacion->usuario == $_SESSION['logueado']): ?>
+                    <?php if ($datosPublicacion->usuario == $params['usuario']->usuario) : ?>
                         <a
                             href="<?php echo URL_PROJECT ?>/publicaciones/eliminar/<?php echo $datosPublicacion->idPublicacion ?>"><i
                                 class="far fa-trash-alt"></i></a>
@@ -109,7 +109,7 @@ include_once URL_APP . '/view/custom/aside.php';
                         <img src="<?php echo URL_PROJECT . '/' . $datosComentarios->fotoPerfil ?>" alt="" class="image-border mr-2">
                         <div class="contenido-comentario-usuario">
                             <?php if ($datosComentarios->idUser == $_SESSION['logueado']): ?>
-                                <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $datosComentarios->idComentario ?>"
+                                <a href="<?php echo URL_PROJECT ?>/publicaciones/eliminarComentario/<?php echo $datosComentarios->idComentario . '/' . $datosComentarios->idPublicacion ?>"
                                     class="float-right"><i class="far fa-trash-alt"></i></a>
                             <?php endif ?>
                             <a href="<?php echo URL_PROJECT ?>/perfil/<?php echo $datosComentarios->usuario ?>"

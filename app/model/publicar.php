@@ -48,6 +48,8 @@ class publicar
             $this->db->bind(':id', $publicacion->idPublicacion);
             if ($this->db->execute()) {
                 return true;
+            } else {
+                return false;
             }
         } else {
             return false;
@@ -140,18 +142,24 @@ class publicar
 
     public function getInformacionComentarios($comentarios)
     {
-        $this->db->query('SELECT C.idPublicacion, C.idUser, C.contenidoComentario, C.fechaComentario, P.fotoPerfil, U.usuario FROM comentarios C
+        $this->db->query('SELECT C.idPublicacion, C.idComentario, C.idUser, C.contenidoComentario, C.fechaComentario, P.fotoPerfil, U.usuario FROM comentarios C
         INNER JOIN perfil P ON P.idUsuario = C.idUser
         INNER JOIN usuarios U ON U.idUsuario = C.idUser');
         return $this->db->registers();
     }
 
-    public function eliminarComentarioUsuario($id)
+    public function eliminarComentarioUsuario($id, $idPublicacion)
     {
-        $this->db->query('DELETE FROM comentarios WHERE idComentario = :id');
-        $this->db->bind(':id', $id);
+        $this->db->query('DELETE FROM comentarios WHERE idPublicacion = :id');
+        $this->db->bind(':id', $idPublicacion);
         if ($this->db->execute()) {
-            return true;
+            $this->db->query('DELETE FROM comentarios WHERE idComentario = :id');
+            $this->db->bind(':id', $id);
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
