@@ -84,9 +84,9 @@ class Publicaciones extends Controller
         }
     }
 
-    public function eliminarComentario($id)
+    public function eliminarComentario($id, $idPublicacion)
     {
-        if($this->publicar->eliminarComentarioUsuario($id)){
+        if($this->publicar->eliminarComentarioUsuario($id,$idPublicacion)){
             redirection('/home');
         } else {
             redirection('/home');
