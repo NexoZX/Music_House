@@ -15,6 +15,7 @@ class Home extends Controller
             $datosPerfil = $this->usuario->getPerfil($_SESSION['logueado']);
 
             $datosPublicaciones = $this->publicaciones->getPublicaciones();
+            $cantPublicaciones = $this->publicaciones->getCantPublicaciones($_SESSION['logueado']);
 
             $verificarLike = $this->publicaciones->misLikes($_SESSION['logueado']);
 
@@ -27,6 +28,7 @@ class Home extends Controller
                     'usuario' => $datosUsuario,
                     'perfil' => $datosPerfil,
                     'publicaciones' => $datosPublicaciones,
+                    'cant' => $cantPublicaciones,
                     'misLikes' => $verificarLike,
                     'comentarios' => $informacionComentarios
                 ];

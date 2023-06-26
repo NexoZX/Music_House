@@ -19,9 +19,21 @@ class Publicaciones extends Controller
             $rutaImagen = 'sin imagen';
         }
 
+        if (isset($_FILES['audio']) && $_FILES['audio']['size'] != 0) {
+            $carpetaAud = 'C:/xampp/htdocs/Music_House/public/audio/audioPublicaciones/';
+            opendir($carpetaAud);
+            $audioNameFix = str_replace(' ', '_', $_FILES['audio']['name']);
+            $rutaAudio = 'audio/audioPublicaciones/' . $audioNameFix;
+            $ruta = $carpetaAud . $audioNameFix;
+            copy($_FILES['audio']['tmp_name'], $rutaAudio);
+        } else {
+            $rutaAudio = 'sin audio';
+        }
+
         $datos = [
             'iduser' => trim($idUsuario),
             'contenido' => trim($_POST['contenido']),
+            'audio' => $rutaAudio,
             'foto' => $rutaImagen
         ];
 
@@ -38,6 +50,7 @@ class Publicaciones extends Controller
 
         if ($this->publicar->eliminarPublicacion($publicacion)) {
             unlink(URL_PUBLIC_DIRECTORY . '/' . $publicacion->fotoPublicacion);
+            unlink(URL_PUBLIC_DIRECTORY . '/' . $publicacion->audioPublicacion);
             redirection('/home');
         } else {
             # code...

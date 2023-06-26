@@ -68,10 +68,18 @@ include_once URL_APP . '/view/custom/aside.php';
                 <p class="mb-1">
                     <?php echo $datosPublicacion->contenidoPublicacion ?>
                 </p>
-                <?php if ($datosPublicacion->fotoPublicacion != "sin imagen"): ?>
+                <?php if ($datosPublicacion->fotoPublicacion != "sin imagen") : ?>
                     <hr>
                     <img src="<?php echo URL_PROJECT . '/' . $datosPublicacion->fotoPublicacion ?>" alt=""
                         class="imagen-publicacion-usuario">
+                <?php endif ?>
+                <?php if ($datosPublicacion->audioPublicacion != "sin audio") : ?>
+                    <hr>
+                    <audio controls>
+                        <source src="<?php echo URL_PROJECT . '/' . $datosPublicacion->audioPublicacion ?>" type="audio/mpeg">
+                        <source src="<?php echo URL_PROJECT . '/' . $datosPublicacion->audioPublicacion ?>" type="audio/ogg">
+                        <source src="<?php echo URL_PROJECT . '/' . $datosPublicacion->audioPublicacion ?>" type="audio/wav">
+                    </audio>
                 <?php endif ?>
             </div>
             <hr>

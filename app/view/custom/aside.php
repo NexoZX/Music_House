@@ -18,14 +18,14 @@
                     <img src="<?php echo URL_PROJECT ?>/img/image.png" alt="" class="image-public">
 
                     <center>
-                        <input type="file" name="imagen" id="selectedFile" style="display: none;" accept="image/png, image/gif, image/jpeg, audio/mp3" />
-                        <input class="btn btn-secondary" type="button" value="Adjuntar Archivo" onclick="document.getElementById('selectedFile').click();"/><br><p></p>
+                        <input type="file" name="imagen" id="selectedFile" style="display: none;" accept="image/png, image/gif, image/jpeg" />
+                        <input class="btn btn-secondary" type="button" value="Adjuntar Imagen" onclick="document.getElementById('selectedFile').click();"/><br><p></p>
+                        <input type="file" name="audio" id="selectedAudioFile" style="display: none;" accept="audio/mp3" />
+                        <input class="btn btn-secondary" type="button" value="Adjuntar Audio" onclick="document.getElementById('selectedAudioFile').click();"/><br><p></p>
                         <button class="btn btn-secondary" width="20">Publicar</button>
                     </center>
                 </form>
                 <hr>
-
-
 
                 <a class="btn btn-secondary" href=""><i class=" fa-solid fa-square-plus" style="color: #ffffff;"></i> Crear</a>
                 <a class="btn btn-secondary" href=""><i class="fa-solid fa-compass" style="color: #ffffff;"></i> Explorar</a>
@@ -33,7 +33,7 @@
                 <a class="btn btn-secondary" href=""><i class="fa-solid fa-gear" style="color: #ffffff;"></i> Configuración</a>
                 <hr>
 
-                Publicaciones: 0 <br>
+                Publicaciones: <?php echo $params['cant']->contado ?> <br>
                 Likes: 0<br>
                 Seguidores: 0
                 <hr>

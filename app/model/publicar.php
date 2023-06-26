@@ -11,9 +11,10 @@ class publicar
 
     public function publicar($datos)
     {
-        $this->db->query('INSERT INTO publicaciones (idUserpublico, contenidoPublicacion, fotoPublicacion) VALUES (:iduser, :contenido, :foto)');
+        $this->db->query('INSERT INTO publicaciones (idUserpublico, contenidoPublicacion, audioPublicacion, fotoPublicacion) VALUES (:iduser, :contenido, :audio, :foto)');
         $this->db->bind(':iduser', $datos['iduser']);
         $this->db->bind(':contenido', $datos['contenido']);
+        $this->db->bind(':audio', $datos['audio']);
         $this->db->bind(':foto', $datos['foto']);
 
         if ($this->db->execute()) {
@@ -25,7 +26,7 @@ class publicar
 
     public function getPublicaciones()
     {
-        $this->db->query('SELECT P.idPublicacion, P.contenidoPublicacion, P.fotoPublicacion, P.fechaPublicacion, P.num_likes, U.usuario, U.idUsuario, Per.fotoPerfil FROM publicaciones P
+        $this->db->query('SELECT P.idPublicacion, P.contenidoPublicacion, P.audioPublicacion, P.fotoPublicacion, P.fechaPublicacion, P.num_likes, U.usuario, U.idUsuario, Per.fotoPerfil FROM publicaciones P
         INNER JOIN usuarios U ON U.idUsuario = P.idUserPublico
         INNER JOIN perfil Per ON Per.idUsuario = P.idUserPublico
         ORDER BY P.fechaPublicacion DESC');
@@ -35,6 +36,13 @@ class publicar
     public function getPublicacion($id)
     {
         $this->db->query('SELECT * FROM publicaciones WHERE idPublicacion = :id');
+        $this->db->bind(':id', $id);
+        return $this->db->register();
+    }
+
+    public function getCantPublicaciones($id)
+    {
+        $this->db->query('SELECT COUNT(*) AS contado FROM publicaciones WHERE idUserPublico = :id');
         $this->db->bind(':id', $id);
         return $this->db->register();
     }
