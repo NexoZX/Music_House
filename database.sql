@@ -45,6 +45,7 @@ create table publicaciones
 idPublicacion INT NOT NULL AUTO_INCREMENT,
 idUserPublico INT,
 contenidoPublicacion LONGTEXT,
+audioPublicacion VARCHAR(255),
 fotoPublicacion VARCHAR(255),
 num_likes INT,
 fechaPublicacion TIMESTAMP,
