@@ -6,7 +6,7 @@ class Controller
         if(file_exists(URL_APP . "/view/" . $view . ".php")) {
             require_once URL_APP . "/view/" . $view . ".php";
         } else {
-            echo "The view doesn't exist";
+            echo "La vista no existe.";
         }
     }
 

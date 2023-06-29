@@ -4,7 +4,7 @@
     </div>
     <nav>
         <ul class="nav-links">
-            <li><a href="../pages/home.php"><i class="fa-solid fa-house" style="color: #ffffff;"></i> Inicio</a></li>
+            <li><a href="<?php echo URL_PROJECT . '/view/pages/home.php' ?>"><i class="fa-solid fa-house" style="color: #ffffff;"></i> Inicio</a></li>
             <li><a href="#"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Usuarios</a></li>
             <input class="searchbar" type="text" placeholder=" Buscar">
             <i class="fa fa-search" style="font-size: 18px; color:white"></i>
